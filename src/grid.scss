@@ -81,22 +81,23 @@ $gap: 20px;
     }
 }
 
-@for $i from 1 through $cols {
-    .col-#{$i}-#{$cols} {
-        width: $i * $colwidth;
-    }
-    .push-col-#{$i}-#{$cols} {
-        margin-left: $i * $colwidth;
-    }
-}
-
 @include respond-to('huge') {
     @for $i from 1 through $cols {
-        .lg-#{$i}-#{$cols} {
+        .hg-#{$i}-#{$cols} {
             width: $i * $colwidth;
         }
-        .push-lg-#{$i}-#{$cols} {
+        .push-hg-#{$i}-#{$cols} {
             margin-left: $i * $colwidth;
+        }
+        .lg-#{$i}-#{$cols} {
+            &:not([class*="hg"]){
+                width: $i * $colwidth;
+            }
+        }
+        .push-lg-#{$i}-#{$cols} {
+            &:not([class*="hg"]){
+                margin-left: $i * $colwidth;
+            }
         }
     }
 }

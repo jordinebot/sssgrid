@@ -43,196 +43,196 @@
   clear: both;
 }
 
-.col-1-12 {
-  width: 8.33333%;
-}
-
-.push-col-1-12 {
-  margin-left: 8.33333%;
-}
-
-.col-2-12 {
-  width: 16.66667%;
-}
-
-.push-col-2-12 {
-  margin-left: 16.66667%;
-}
-
-.col-3-12 {
-  width: 25%;
-}
-
-.push-col-3-12 {
-  margin-left: 25%;
-}
-
-.col-4-12 {
-  width: 33.33333%;
-}
-
-.push-col-4-12 {
-  margin-left: 33.33333%;
-}
-
-.col-5-12 {
-  width: 41.66667%;
-}
-
-.push-col-5-12 {
-  margin-left: 41.66667%;
-}
-
-.col-6-12 {
-  width: 50%;
-}
-
-.push-col-6-12 {
-  margin-left: 50%;
-}
-
-.col-7-12 {
-  width: 58.33333%;
-}
-
-.push-col-7-12 {
-  margin-left: 58.33333%;
-}
-
-.col-8-12 {
-  width: 66.66667%;
-}
-
-.push-col-8-12 {
-  margin-left: 66.66667%;
-}
-
-.col-9-12 {
-  width: 75%;
-}
-
-.push-col-9-12 {
-  margin-left: 75%;
-}
-
-.col-10-12 {
-  width: 83.33333%;
-}
-
-.push-col-10-12 {
-  margin-left: 83.33333%;
-}
-
-.col-11-12 {
-  width: 91.66667%;
-}
-
-.push-col-11-12 {
-  margin-left: 91.66667%;
-}
-
-.col-12-12 {
-  width: 100%;
-}
-
-.push-col-12-12 {
-  margin-left: 100%;
-}
-
 @media only screen and (min-width: 1921px) {
-  .lg-1-12 {
+  .hg-1-12 {
     width: 8.33333%;
   }
 
-  .push-lg-1-12 {
+  .push-hg-1-12 {
     margin-left: 8.33333%;
   }
 
-  .lg-2-12 {
+  .lg-1-12:not([class*="hg"]) {
+    width: 8.33333%;
+  }
+
+  .push-lg-1-12:not([class*="hg"]) {
+    margin-left: 8.33333%;
+  }
+
+  .hg-2-12 {
     width: 16.66667%;
   }
 
-  .push-lg-2-12 {
+  .push-hg-2-12 {
     margin-left: 16.66667%;
   }
 
-  .lg-3-12 {
+  .lg-2-12:not([class*="hg"]) {
+    width: 16.66667%;
+  }
+
+  .push-lg-2-12:not([class*="hg"]) {
+    margin-left: 16.66667%;
+  }
+
+  .hg-3-12 {
     width: 25%;
   }
 
-  .push-lg-3-12 {
+  .push-hg-3-12 {
     margin-left: 25%;
   }
 
-  .lg-4-12 {
+  .lg-3-12:not([class*="hg"]) {
+    width: 25%;
+  }
+
+  .push-lg-3-12:not([class*="hg"]) {
+    margin-left: 25%;
+  }
+
+  .hg-4-12 {
     width: 33.33333%;
   }
 
-  .push-lg-4-12 {
+  .push-hg-4-12 {
     margin-left: 33.33333%;
   }
 
-  .lg-5-12 {
+  .lg-4-12:not([class*="hg"]) {
+    width: 33.33333%;
+  }
+
+  .push-lg-4-12:not([class*="hg"]) {
+    margin-left: 33.33333%;
+  }
+
+  .hg-5-12 {
     width: 41.66667%;
   }
 
-  .push-lg-5-12 {
+  .push-hg-5-12 {
     margin-left: 41.66667%;
   }
 
-  .lg-6-12 {
+  .lg-5-12:not([class*="hg"]) {
+    width: 41.66667%;
+  }
+
+  .push-lg-5-12:not([class*="hg"]) {
+    margin-left: 41.66667%;
+  }
+
+  .hg-6-12 {
     width: 50%;
   }
 
-  .push-lg-6-12 {
+  .push-hg-6-12 {
     margin-left: 50%;
   }
 
-  .lg-7-12 {
+  .lg-6-12:not([class*="hg"]) {
+    width: 50%;
+  }
+
+  .push-lg-6-12:not([class*="hg"]) {
+    margin-left: 50%;
+  }
+
+  .hg-7-12 {
     width: 58.33333%;
   }
 
-  .push-lg-7-12 {
+  .push-hg-7-12 {
     margin-left: 58.33333%;
   }
 
-  .lg-8-12 {
+  .lg-7-12:not([class*="hg"]) {
+    width: 58.33333%;
+  }
+
+  .push-lg-7-12:not([class*="hg"]) {
+    margin-left: 58.33333%;
+  }
+
+  .hg-8-12 {
     width: 66.66667%;
   }
 
-  .push-lg-8-12 {
+  .push-hg-8-12 {
     margin-left: 66.66667%;
   }
 
-  .lg-9-12 {
+  .lg-8-12:not([class*="hg"]) {
+    width: 66.66667%;
+  }
+
+  .push-lg-8-12:not([class*="hg"]) {
+    margin-left: 66.66667%;
+  }
+
+  .hg-9-12 {
     width: 75%;
   }
 
-  .push-lg-9-12 {
+  .push-hg-9-12 {
     margin-left: 75%;
   }
 
-  .lg-10-12 {
+  .lg-9-12:not([class*="hg"]) {
+    width: 75%;
+  }
+
+  .push-lg-9-12:not([class*="hg"]) {
+    margin-left: 75%;
+  }
+
+  .hg-10-12 {
     width: 83.33333%;
   }
 
-  .push-lg-10-12 {
+  .push-hg-10-12 {
     margin-left: 83.33333%;
   }
 
-  .lg-11-12 {
+  .lg-10-12:not([class*="hg"]) {
+    width: 83.33333%;
+  }
+
+  .push-lg-10-12:not([class*="hg"]) {
+    margin-left: 83.33333%;
+  }
+
+  .hg-11-12 {
     width: 91.66667%;
   }
 
-  .push-lg-11-12 {
+  .push-hg-11-12 {
     margin-left: 91.66667%;
   }
 
-  .lg-12-12 {
+  .lg-11-12:not([class*="hg"]) {
+    width: 91.66667%;
+  }
+
+  .push-lg-11-12:not([class*="hg"]) {
+    margin-left: 91.66667%;
+  }
+
+  .hg-12-12 {
     width: 100%;
   }
 
-  .push-lg-12-12 {
+  .push-hg-12-12 {
+    margin-left: 100%;
+  }
+
+  .lg-12-12:not([class*="hg"]) {
+    width: 100%;
+  }
+
+  .push-lg-12-12:not([class*="hg"]) {
     margin-left: 100%;
   }
 }
