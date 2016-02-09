@@ -5,7 +5,7 @@ $large:  1920px;
 
 $cols: 12;
 $colwidth: 100% / $cols;
-$gap: 1em;
+$gap: 20px;
 
 // Clearfix
 @mixin clearfix {
@@ -42,12 +42,51 @@ $gap: 1em;
     }
 }
 
+// Wrappers
+[class$="wrapper"] {
+    box-sizing: border-box;
+    width: 100%;
+    margin: $gap auto;
+}
+
+.inner-wrapper {
+    max-width: 960px;
+}
+
+.full-wrapper {
+    max-width: 1280px;
+}
+
+.extended-wrapper {
+    max-width: 1440px;
+}
+
+.fluid-wrapper {
+    max-width: auto;
+}
+
 // Grid
-[class*="lg"], [class*="md"], [class*="sm"] {
+.row {
+    @include clearfix;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+[class*="col"], [class*="lg"], [class*="md"], [class*="sm"] {
+    box-sizing: border-box;
     float: left;
     .content {
         @include clearfix;
-        padding: $gap / 2;
+        margin: 0 ($gap / 2) $gap ($gap / 2);
+    }
+}
+
+@for $i from 1 through $cols {
+    .col-#{$i}-#{$cols} {
+        width: $i * $colwidth;
+    }
+    .push-col-#{$i}-#{$cols} {
+        margin-left: $i * $colwidth;
     }
 }
 
@@ -88,7 +127,6 @@ $gap: 1em;
     @for $i from 1 through $cols {
         .sm-#{$i}-#{$cols} {
             width: $i * $colwidth;
-            padding: 0 0.5em;
         }
         .push-sm-#{$i}-#{$cols} {
             margin-left: $i * $colwidth;
