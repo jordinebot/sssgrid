@@ -1,1 +1,1 @@
-# sssgrid
+# So Simple SCSS Grid

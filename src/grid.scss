@@ -1,0 +1,97 @@
+// Settings
+$small:  480px;
+$medium: 1024px;
+$large:  1920px;
+
+$cols: 12;
+$colwidth: 100% / $cols;
+$gap: 1em;
+
+// Clearfix
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// Media Queries
+@mixin respond-to($media) {
+    @each $size in $media {
+        @if $size == 'small' {
+            @media only screen and (max-width: $small) {
+                @content;
+            }
+        }
+        @else if $size == 'medium' {
+            @media only screen and (min-width: $small + 1) and (max-width: $medium) {
+                @content;
+            }
+        }
+        @else if $size == 'large' {
+            @media only screen and (min-width: $medium + 1) and (max-width: $large) {
+                @content;
+            }
+        }
+        @else if $size == 'huge' {
+            @media only screen and (min-width: $large + 1) {
+                @content;
+            }
+        }
+    }
+}
+
+// Grid
+[class*="lg"], [class*="md"], [class*="sm"] {
+    float: left;
+    .content {
+        @include clearfix;
+        padding: $gap / 2;
+    }
+}
+
+@include respond-to('huge') {
+    @for $i from 1 through $cols {
+        .lg-#{$i}-#{$cols} {
+            width: $i * $colwidth;
+        }
+        .push-lg-#{$i}-#{$cols} {
+            margin-left: $i * $colwidth;
+        }
+    }
+}
+
+@include respond-to('large') {
+    @for $i from 1 through $cols {
+        .lg-#{$i}-#{$cols} {
+            width: $i * $colwidth;
+        }
+        .push-lg-#{$i}-#{$cols} {
+            margin-left: $i * $colwidth;
+        }
+    }
+}
+
+@include respond-to('medium') {
+    @for $i from 1 through $cols {
+        .md-#{$i}-#{$cols} {
+            width: $i * $colwidth;
+        }
+        .push-md-#{$i}-#{$cols} {
+            margin-left: $i * $colwidth;
+        }
+    }
+}
+
+@include respond-to('small') {
+    @for $i from 1 through $cols {
+        .sm-#{$i}-#{$cols} {
+            width: $i * $colwidth;
+            padding: 0 0.5em;
+        }
+        .push-sm-#{$i}-#{$cols} {
+            margin-left: $i * $colwidth;
+        }
+    }
+}
