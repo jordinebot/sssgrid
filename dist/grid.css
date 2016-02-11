@@ -20,6 +20,12 @@
   max-width: auto;
 }
 
+@media only screen and (min-width: 1921px) {
+  .hg-fluid-wrapper {
+    max-width: 100%;
+  }
+}
+
 .row {
   box-sizing: border-box;
   width: 100%;

@@ -65,6 +65,12 @@ $gap: 20px;
     max-width: auto;
 }
 
+.hg-fluid-wrapper {
+    @include respond-to(huge) {
+        max-width: 100%;
+    }
+}
+
 // Grid
 .row {
     @include clearfix;
