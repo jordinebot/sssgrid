@@ -1,7 +1,7 @@
 // Settings
 $small:  480px;
 $medium: 1024px;
-$large:  1920px;
+$large:  1440px;
 
 $cols: 12;
 $colwidth: 100% / $cols;
@@ -16,25 +16,32 @@ $gap: 20px;
     }
 }
 
+// Center Flexbox
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 // Media Queries
 @mixin respond-to($media) {
     @each $size in $media {
-        @if $size == 'small' {
+        @if $size == "small" {
             @media only screen and (max-width: $small) {
                 @content;
             }
         }
-        @else if $size == 'medium' {
-            @media only screen and (min-width: $small + 1) and (max-width: $medium) {
+        @else if $size == "medium" {
+            @media only screen and (min-width: $small + 1) and (max-width: $medium - 1) {
                 @content;
             }
         }
-        @else if $size == 'large' {
-            @media only screen and (min-width: $medium + 1) and (max-width: $large) {
+        @else if $size == "large" {
+            @media only screen and (min-width: $medium) and (max-width: $large) {
                 @content;
             }
         }
-        @else if $size == 'huge' {
+        @else if $size == "huge" {
             @media only screen and (min-width: $large + 1) {
                 @content;
             }
@@ -44,31 +51,26 @@ $gap: 20px;
 
 // Wrappers
 [class$="wrapper"] {
+    @include clearfix;
     box-sizing: border-box;
     width: 100%;
-    margin: $gap auto;
-}
-
-.inner-wrapper {
-    max-width: 960px;
-}
-
-.full-wrapper {
-    max-width: 1280px;
-}
-
-.extended-wrapper {
-    max-width: 1440px;
+    margin: 0 auto;
 }
 
 .fluid-wrapper {
-    max-width: auto;
+    max-width: 100%;
 }
 
-.hg-fluid-wrapper {
-    @include respond-to(huge) {
-        max-width: 100%;
-    }
+.extended-wrapper {
+    max-width: 1280px;
+}
+
+.full-wrapper {
+    max-width: 960px;
+}
+
+.inner-wrapper {
+    max-width: 768px;
 }
 
 // Grid
@@ -76,67 +78,178 @@ $gap: 20px;
     @include clearfix;
     box-sizing: border-box;
     width: 100%;
+    & + .row {
+        margin-top: $gap;
+    }
 }
 
-[class*="col"], [class*="lg"], [class*="md"], [class*="sm"] {
+[class*="hg-"], [class*="lg-"], [class*="md-"], [class*="sm-"] {
     box-sizing: border-box;
     float: left;
+    position: relative;
     .content {
         @include clearfix;
-        margin: 0 ($gap / 2) $gap ($gap / 2);
+        margin: 0 ($gap / 2) 0 ($gap / 2);
     }
 }
 
-@include respond-to('huge') {
+@include respond-to("huge") {
     @for $i from 1 through $cols {
-        .hg-#{$i}-#{$cols} {
-            width: $i * $colwidth;
-        }
-        .push-hg-#{$i}-#{$cols} {
-            margin-left: $i * $colwidth;
-        }
-        .lg-#{$i}-#{$cols} {
-            &:not([class*="hg"]){
+        .hg-#{$i} {
+            width: calc(#{$i * $colwidth} - #{$gap});
+            margin: 0 $gap / 2;
+            .no-gap & {
                 width: $i * $colwidth;
+                margin: 0;
+                &:first-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-left: $gap / 2;
+                }
+                &:last-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-right: $gap / 2;
+                }
+                &:only-child {
+                    width: calc(#{$i * $colwidth} - #{$gap});
+                    margin-left: $gap / 2;
+                    margin-right: $gap / 2;
+                }
             }
         }
-        .push-lg-#{$i}-#{$cols} {
+        .pull-hg-#{$i} {
+            right: $i * $colwidth;
+        }
+        .push-hg-#{$i} {
+            left: $i * $colwidth;
+        }
+        .lg-#{$i} {
             &:not([class*="hg"]){
-                margin-left: $i * $colwidth;
+                width: calc(#{$i * $colwidth} - #{$gap});
+                margin: 0 $gap / 2;
+                .no-gap & {
+                    width: $i * $colwidth;
+                    margin: 0;
+                    &:first-child {
+                        width: calc(#{$i * $colwidth} - #{$gap / 2});
+                        margin-left: $gap / 2;
+                    }
+                    &:last-child {
+                        width: calc(#{$i * $colwidth} - #{$gap / 2});
+                        margin-right: $gap / 2;
+                    }
+                    &:only-child {
+                        width: calc(#{$i * $colwidth} - #{$gap});
+                        margin-left: $gap / 2;
+                        margin-right: $gap / 2;
+                    }
+                }
+            }
+        }
+        .pull-lg-#{$i} {
+            &:not([class*="hg"]){
+                right: $i * $colwidth;
+            }
+        }
+        .push-lg-#{$i} {
+            &:not([class*="hg"]){
+                left: $i * $colwidth;
             }
         }
     }
 }
 
-@include respond-to('large') {
+@include respond-to("large") {
     @for $i from 1 through $cols {
-        .lg-#{$i}-#{$cols} {
-            width: $i * $colwidth;
+        .lg-#{$i} {
+            width: calc(#{$i * $colwidth} - #{$gap});
+            margin: 0 $gap / 2;
+            .no-gap & {
+                width: $i * $colwidth;
+                margin: 0;
+                &:first-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-left: $gap / 2;
+                }
+                &:last-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-right: $gap / 2;
+                }
+                &:only-child {
+                    width: calc(#{$i * $colwidth} - #{$gap});
+                    margin-left: $gap / 2;
+                    margin-right: $gap / 2;
+                }
+            }
         }
-        .push-lg-#{$i}-#{$cols} {
-            margin-left: $i * $colwidth;
+        .push-lg-#{$i} {
+            left: $i * $colwidth;
+        }
+        .pull-lg-#{$i} {
+            right: $i * $colwidth;
         }
     }
 }
 
-@include respond-to('medium') {
+@include respond-to("medium") {
     @for $i from 1 through $cols {
-        .md-#{$i}-#{$cols} {
-            width: $i * $colwidth;
+        .md-#{$i} {
+            width: calc(#{$i * $colwidth} - #{$gap});
+            margin: 0 $gap / 2;
+            .no-gap & {
+                width: $i * $colwidth;
+                margin: 0;
+                &:first-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-left: $gap / 2;
+                }
+                &:last-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-right: $gap / 2;
+                }
+                &:only-child {
+                    width: calc(#{$i * $colwidth} - #{$gap});
+                    margin-left: $gap / 2;
+                    margin-right: $gap / 2;
+                }
+            }
         }
-        .push-md-#{$i}-#{$cols} {
-            margin-left: $i * $colwidth;
+        .push-md-#{$i} {
+            left: $i * $colwidth;
+        }
+        .pull-md-#{$i} {
+            right: $i * $colwidth;
         }
     }
 }
 
-@include respond-to('small') {
+@include respond-to("small") {
     @for $i from 1 through $cols {
-        .sm-#{$i}-#{$cols} {
-            width: $i * $colwidth;
+        .sm-#{$i} {
+            width: calc(#{$i * $colwidth} - #{$gap});
+            margin: 0 $gap / 2;
+            .no-gap & {
+                width: $i * $colwidth;
+                margin: 0;
+                &:first-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-left: $gap / 2;
+                }
+                &:last-child {
+                    width: calc(#{$i * $colwidth} - #{$gap / 2});
+                    margin-right: $gap / 2;
+                }
+                &:only-child {
+                    width: calc(#{$i * $colwidth} - #{$gap});
+                    margin-left: $gap / 2;
+                    margin-right: $gap / 2;
+                }
+            }
         }
-        .push-sm-#{$i}-#{$cols} {
-            margin-left: $i * $colwidth;
+        .push-sm-#{$i} {
+            left: $i * $colwidth;
+        }
+        .pull-sm-#{$i} {
+            right: $i * $colwidth;
         }
     }
 }
